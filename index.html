@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <!-- <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style> -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="calculator">
+    <div class="row__top">
+      <div class="top__title">
+        <h4>calc</h4>
+      </div>
+      <div class="top__toggler">
+        <p>theme</p>
+        <div class="toggler__container">
+          <div class="toggler__info">
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+          </div>
+          <div class="toggler">
+            <div></div>
+            <div></div>
+            <div></div>
+            <span id="knob"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row__middle">
+      <form name="answerForm">
+        <input name="answer" dir="rtl"/>
+      </form>
+    </div>
+    <div class="row__bottom">
+      <div class="row">
+        <input type="button" value="7" onclick="answerForm.answer.value += '7'">
+        <input type="button" value="8" onclick="answerForm.answer.value += '8'">
+        <input type="button" value="9" onclick="answerForm.answer.value += '9'">
+        <input type="button" value="DEL" class="funkey" onclick="answerForm.answer.value = answerForm.answer.value.slice(0,answerForm.answer.value.length-1)">
+      </div>
+      <div class="row">
+        <input type="button" value="4" onclick="answerForm.answer.value += '4'">
+        <input type="button" value="5" onclick="answerForm.answer.value += '5'">
+        <input type="button" value="6" onclick="answerForm.answer.value += '6'">
+        <input type="button" value="+" onclick="answerForm.answer.value += '+'">
+      </div>
+      <div class="row">
+        <input type="button" value="1" onclick="answerForm.answer.value += '1'">
+        <input type="button" value="2" onclick="answerForm.answer.value += '2'">
+        <input type="button" value="3" onclick="answerForm.answer.value += '3'">
+        <input type="button" value="-" onclick="answerForm.answer.value += '-'">
+      </div>
+      <div class="row">
+        <input type="button" value="." onclick="answerForm.answer.value += '.'">
+        <input type="button" value="0" onclick="answerForm.answer.value += '0'">
+        <input type="button" value="/" onclick="answerForm.answer.value += '/'">
+        <input type="button" value="*" onclick="answerForm.answer.value += '*'">
+      </div>
+      <div class="row row__last">
+        <input type="button" value="RESET" class="funkey" onclick="answerForm.answer.value = '0'">
+        <input type="button" value="=" class="eval" onclick="answerForm.answer.value = eval(answerForm.answer.value)">
+      </div>
+    </div>
+  </div>
+
+
+  
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+
+  <script>
+    let toggler = 1;
+    document.documentElement.setAttribute("class","primary__theme");
+    document.getElementsByClassName("toggler")[0].addEventListener("click",function(){
+      let knob = document.getElementById("knob");
+      if(toggler==1){
+        knob.removeAttribute("class");
+        knob.setAttribute("class","second");
+        document.documentElement.setAttribute("class","secondary__theme");
+        toggler++;
+      }else if(toggler==2){
+        knob.removeAttribute("class");
+        knob.setAttribute("class","third");
+        document.documentElement.setAttribute("class","third__theme");
+        toggler++;
+      }else{
+        knob.removeAttribute("class");
+        knob.setAttribute("class","first");
+        document.documentElement.setAttribute("class","primary__theme");
+        toggler = 1;
+      }
+    })
+  </script>
+</body>
+</html>
